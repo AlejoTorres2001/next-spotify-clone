@@ -40,6 +40,7 @@ export default NextAuth({
     async jwt({ token, account, user }) {
       //initial sign in
       if (account && user) {
+        console.log("Exisiting access token is valid")
         return {
           ...token,
           accessToken: account.access_token,
