@@ -18,7 +18,7 @@ export async function middleware(req, res, next) {
     if (pathname.includes("/api/auth") || token ) {
         return NextResponse.next()
     }
-    
+    //had to comment this out because of an error in middlewaares not allowing to  get to the main page 
     // //REDIRECT TO LOGIN
     // if (!token && pathname !== '/login'){
     //     return NextResponse.redirect('/login')
