@@ -30,7 +30,6 @@ const Player = () => {
   const fetchCurrentSong = async () => {
     if (!songInfo) {
       SpotifyApi.getMyCurrentPlayingTrack().then((res) => {
-        console.log("Now pLaying", res.body?.item?.id);
         setCurrentTrakId(res.body?.item?.id);
         SpotifyApi.getMyCurrentPlaybackState().then((res) => {
           setIsPlaying(res.body?.is_playing);
@@ -68,7 +67,6 @@ const Player = () => {
     SpotifyApi.getMyDevices().then(
         function (data) {
           let availableDevices = data.body.devices;
-          console.log(availableDevices);
           if (availableDevices.some(d => d.is_active === true)) {
             if (volume > 0 && volume < 100) {
                 debouncedAdjustVolume(volume);
