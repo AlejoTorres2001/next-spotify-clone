@@ -54,12 +54,7 @@ const Sidebar = () => {
           <RssIcon className="h-5 w-5" />
           <p>Your Episodes</p>
         </button>
-        <button
-          className="flex items-center space-x-2 hover:text-white"
-          onClick={() => signOut()}
-        >
-          <p>Logout</p>
-        </button>
+       
         {/* Playlist */}
         {playlists.map((playlist) => (
           <p
