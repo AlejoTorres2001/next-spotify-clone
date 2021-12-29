@@ -8,10 +8,10 @@ export async function middleware(req, res, next) {
     //1) have token
     //2) is an auth req
 
-    // //if user have token and trys to log in 
-    // if (token && pathname === "/login"){
-    //     return  NextResponse.redirect('/')
-    // }
+    //if user have token and trys to log in 
+    if (token && pathname === "/login"){
+        return  NextResponse.redirect('/')
+    }
     
     if (pathname.includes("/api/auth") || token ) {
         return NextResponse.next()
