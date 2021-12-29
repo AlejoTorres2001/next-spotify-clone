@@ -3,7 +3,8 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { shuffle } from "lodash";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { playListIdState } from "../atoms/playListAtom";
+import { playListIdState, playListState } from "../atoms/playListAtom";
+import useSpotify from "../hooks/useSpotify";
 
 const Center = () => {
   const colors = [
@@ -18,11 +19,25 @@ const Center = () => {
     "from-yellow-500",
   ];
   const { data: session } = useSession();
+  const SpotifyApi = useSpotify();
   const [color, setColor] = useState(null);
   const playListId = useRecoilValue(playListIdState);
+  const [playList,setPlayList] = useRecoilState(playListState);
   useEffect(() => {
     setColor(shuffle(colors).pop());
   }, [playListId]);
+
+  useEffect(() => {
+    SpotifyApi.getPlaylist(playListId)
+      .then((data) => {
+        setPlayList(data.body);
+      })
+      .catch((err) => {
+        console.log("Something went wrong!", err);
+      });
+  }, [SpotifyApi, playListId]);
+  console.log(playList);
+
   return (
     <div className="flex-grow">
       <header className="absolute top-5 right-8 ">
