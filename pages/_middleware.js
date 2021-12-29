@@ -9,7 +9,7 @@ export async function middleware(req, res, next) {
     //2) is an auth req
 
     //THERE IS A PROBLEM WITH MIDDLEWARES IN DEPLOYMENT
-    
+
     //if user have token and trys to log in 
     if (token && pathname === "/login"){
         return  NextResponse.redirect('/')
@@ -19,8 +19,8 @@ export async function middleware(req, res, next) {
         return NextResponse.next()
     }
     
-    //REDIRECT TO LOGIN
-    if (!token && pathname !== '/login'){
-        return NextResponse.redirect('/login')
-    }
+    // //REDIRECT TO LOGIN
+    // if (!token && pathname !== '/login'){
+    //     return NextResponse.redirect('/login')
+    // }
 }
