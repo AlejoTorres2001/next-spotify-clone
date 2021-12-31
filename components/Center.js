@@ -57,8 +57,8 @@ const Center = () => {
       >
         <img className="h-44 w-44 shadow-2xl m-[2rem]" src={playList?.images?.[0]?.url} alt="" />
         <div className="my-[2rem]">
-            <p>PLAYLIST</p>
-            <h2 className="text-2xl md:text-3xl xl:text-5x font-bold">Playlist Name</h2>
+            <p>{playList?.description}</p>
+            <h2 className="text-2xl md:text-3xl xl:text-5x font-bold"> {playList?.name}</h2>
         </div>
       </section>
       <div>
